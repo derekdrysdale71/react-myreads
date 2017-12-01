@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Route } from 'react-router-dom'
+import BookShelf from './components/BookShelf'
 import * as BooksAPI from './BooksAPI'
 import './App.css'
 
