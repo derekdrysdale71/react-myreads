@@ -33,9 +33,9 @@ class BooksApp extends Component {
           </div>
           <div className="list-books-content">
             <div>
-              <BookShelf shelfName='Currently Reading' books={ books } onChangeShelf={this.onChangeShelf} />
-              <BookShelf shelfName='Want to Read' books={ books } onChangeShelf={this.onChangeShelf} />
-              <BookShelf shelfName='Read' books={ books } onChangeShelf={this.onChangeShelf} />
+              <BookShelf shelfName='Currently Reading' books={books.filter((book) => book.shelf === 'currentlyReading')} onChangeShelf={this.onChangeShelf} />
+              <BookShelf shelfName='Want to Read' books={books.filter((book) => book.shelf === 'wantToRead')} onChangeShelf={this.onChangeShelf} />
+              <BookShelf shelfName='Read' books={books.filter((book) => book.shelf === 'read')} onChangeShelf={this.onChangeShelf} />
             </div>
           </div>
           <div className="open-search">
