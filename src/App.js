@@ -15,8 +15,8 @@ class BooksApp extends Component {
     })
   }
 
-  onChangeShelf(event) {
-    BooksAPI.update({id: event.target.id}, event.target.value).then((response) => {
+  onChangeShelf = (book, shelf) => {
+    BooksAPI.update(book, shelf).then((response) => {
        BooksAPI.getAll().then((books) => {
         this.setState({ books })
       });
