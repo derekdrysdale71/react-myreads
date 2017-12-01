@@ -9,15 +9,15 @@ class BookShelf extends Component {
     onChangeShelf: PropTypes.func.isRequired
   }
 
-  Render() {
+  render() {
     const { books, shelfName, onChangeShelf } = this.props
     return (
       <div className="bookshelf">
         <h2 className="bookshelf-title">{shelfName}</h2>
         <div className="bookshelf-books">
           <ol className="books-grid">
-            {books.map((book) => (
-              <Book key={book.id} book={book} onChangeShelf={onChangeShelf} />
+            {books.map(book => (
+              <Book key={book.id} book={book} onChangeShelf={onChangeShelf}/>
             ))}
           </ol>
         </div>
