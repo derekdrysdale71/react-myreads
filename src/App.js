@@ -34,6 +34,8 @@ class BooksApp extends Component {
           <div className="list-books-content">
             <div>
               <BookShelf shelfName='Currently Reading' books={ books } onChangeShelf={this.onChangeShelf} />
+              <BookShelf shelfName='Want to Read' books={ books } onChangeShelf={this.onChangeShelf} />
+              <BookShelf shelfName='Read' books={ books } onChangeShelf={this.onChangeShelf} />
             </div>
           </div>
           <div className="open-search">
