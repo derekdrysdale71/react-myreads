@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import ShelfSelector from './ShelfSelector'
+import noCoverImage from '../icons/no-cover-image.png'
 
 class Book extends Component {
   static propTypes = {
@@ -11,10 +12,11 @@ class Book extends Component {
 
   render() {
     const { book, onChangeShelf } = this.props
+    const coverImage = book.imageLinks && book.imageLinks.smallThumbnail ? book.imageLinks.smallThumbnail : noCoverImage
     const coverStyle = {
       width: 128,
       height: 193,
-      backgroundImage: `url('${book.imageLinks.smallThumbnail}')`
+      backgroundImage: `url(${coverImage})`
     }
     return(
       <li>
