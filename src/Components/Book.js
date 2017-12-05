@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import ShelfSelector from './ShelfSelector'
-import noCoverImage from '../icons/no-cover-image.png'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import ShelfSelector from './ShelfSelector';
+import noCoverImage from '../icons/no-cover-image.png';
 
 class Book extends Component {
   static propTypes = {

@@ -1,11 +1,13 @@
-import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
-import PropTypes from 'prop-types'
-import * as BooksAPI from '../BooksAPI'
-import Book from './Book'
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { debounce } from 'throttle-debounce';
+import * as BooksAPI from '../BooksAPI';
+import Book from './Book';
 
 class SearchBooks extends Component {
   static propTypes = {
+    books: PropTypes.array.isRequired,
     onChangeShelf: PropTypes.func.isRequired
   }
 
@@ -14,25 +16,44 @@ class SearchBooks extends Component {
     matchingBooks: []
   }
 
+  /**
+   * @description Call search api if new query
+  */
   updateQuery = (query) => {
-    this.setState({matchingBooks: [] })
+    const searchQuery = query.trim();
+    this.setState({ query: searchQuery });
     if (query) {
-      this.setState({ query: query.trim() })
-      BooksAPI.search(this.state.query, 25).then((books) => {
+      BooksAPI.search(searchQuery, 25).then((books) => {
         if (books) {
           if (!books.error) {
-            this.setState({matchingBooks: books})
+            books.map((book) => {this.updateShelfProperty(book)});
+            this.setState({matchingBooks: books});
           } else {
-            this.setState({matchingBooks: []})
+            this.setState({matchingBooks: []});
           }
         }
       })
+    } else {
+      this.setState({matchingBooks: []});
+    }
+  }
+
+  /**
+   * @description Update shelf property on found books to match existing or set to 'none'
+  */
+  updateShelfProperty = (book) => {
+    const {books} = this.props;
+    const existingBook = books.find((existingBook) => (existingBook.id === book.id));
+    if (existingBook) {
+      book.shelf = existingBook.shelf;
+    } else {
+      book.shelf = 'none';
     }
   }
 
   render() {
-    const { onChangeShelf } = this.props
-    const { matchingBooks } = this.state
+    const { onChangeShelf } = this.props;
+    const { matchingBooks, query } = this.state;
     return (
       <div className="search-books">
         <div className="search-books-bar">
@@ -48,7 +69,6 @@ class SearchBooks extends Component {
             <input
               type="text"
               placeholder="Search by title or author"
-
               onChange={(event) => this.updateQuery(event.target.value)}
             />
           </div>

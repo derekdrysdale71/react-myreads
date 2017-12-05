@@ -7,13 +7,16 @@ class ShelfSelector extends Component {
     onChangeShelf: PropTypes.func.isRequired
   }
 
+  /**
+   * @description 
+  */
   handleChangeShelf = (event) => {
     event.preventDefault()
     this.props.onChangeShelf(this.props.book, event.target.value)
   }
 
   render() {
-    const { book } = this.props 
+    const { book } = this.props
     return(
       <div className="book-shelf-changer">
         <select value={book.shelf} onChange={(e) => this.handleChangeShelf(e)}>

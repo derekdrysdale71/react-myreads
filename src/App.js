@@ -1,9 +1,9 @@
-import React, { Component } from 'react'
-import { Route, Link } from 'react-router-dom'
-import BookShelf from './components/BookShelf'
-import SearchBooks from './components/SearchBooks'
-import * as BooksAPI from './BooksAPI'
-import './App.css'
+import React, { Component } from 'react';
+import { Route, Link } from 'react-router-dom';
+import BookShelf from './components/BookShelf';
+import SearchBooks from './components/SearchBooks';
+import * as BooksAPI from './BooksAPI';
+import './App.css';
 
 class BooksApp extends Component {
   state = {
@@ -16,6 +16,9 @@ class BooksApp extends Component {
     })
   }
 
+  /**
+   * @description Call update api and update shelf property
+  */
   onChangeShelf = (book, shelf) => {
     BooksAPI.update(book, shelf).then((response) => {
        BooksAPI.getAll().then((books) => {
@@ -25,7 +28,7 @@ class BooksApp extends Component {
   }
 
   render() {
-    const { books } = this.state
+    const { books } = this.state;
     return (
       <div className="app">
         <Route exact path='/' render={() => (
@@ -47,7 +50,7 @@ class BooksApp extends Component {
           )}
         />
         <Route path='/search' render={({history}) => (
-          <SearchBooks onChangeShelf={this.onChangeShelf}/>
+          <SearchBooks books={books} onChangeShelf={this.onChangeShelf}/>
           )}
         />
       </div>
