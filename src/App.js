@@ -57,4 +57,4 @@ class BooksApp extends Component {
     )
   }
 }
-export default BooksApp
+export default BooksApp;

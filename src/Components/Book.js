@@ -9,7 +9,6 @@ class Book extends Component {
     onChangeShelf: PropTypes.func.isRequired
   }
 
-
   render() {
     const { book, onChangeShelf } = this.props
     const coverImage = book.imageLinks && book.imageLinks.smallThumbnail ? book.imageLinks.smallThumbnail : noCoverImage
@@ -33,4 +32,4 @@ class Book extends Component {
   }
 }
 
-export default Book
+export default Book;

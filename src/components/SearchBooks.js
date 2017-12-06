@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { debounce } from 'throttle-debounce';
 import * as BooksAPI from '../BooksAPI';
 import Book from './Book';
 
@@ -53,7 +52,7 @@ class SearchBooks extends Component {
 
   render() {
     const { onChangeShelf } = this.props;
-    const { matchingBooks, query } = this.state;
+    const { matchingBooks } = this.state;
     return (
       <div className="search-books">
         <div className="search-books-bar">
@@ -85,4 +84,4 @@ class SearchBooks extends Component {
   }
 }
 
-export default SearchBooks
+export default SearchBooks;

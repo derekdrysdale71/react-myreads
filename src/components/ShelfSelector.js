@@ -8,7 +8,7 @@ class ShelfSelector extends Component {
   }
 
   /**
-   * @description 
+   * @description
   */
   handleChangeShelf = (event) => {
     event.preventDefault()
@@ -16,7 +16,7 @@ class ShelfSelector extends Component {
   }
 
   render() {
-    const { book } = this.props
+    const { book } = this.props;
     return(
       <div className="book-shelf-changer">
         <select value={book.shelf} onChange={(e) => this.handleChangeShelf(e)}>
@@ -31,4 +31,4 @@ class ShelfSelector extends Component {
   }
 }
 
-export default ShelfSelector
+export default ShelfSelector;
