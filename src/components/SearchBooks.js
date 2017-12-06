@@ -74,8 +74,17 @@ class SearchBooks extends Component {
         </div>
         <div className="search-books-results">
           <ol className="books-grid">
-            {matchingBooks.map(book => (
-              <Book key={book.id} book={book} onChangeShelf={onChangeShelf}/>
+            {matchingBooks.map((book) => (
+              <Book key={book.id} book={book} onChangeShelf={(book, shelf) => {
+                onChangeShelf(book, shelf);
+                this.setState(status => ({
+                  books: status.matchingBooks.map(b => {
+                    if (book.id === b.id) {
+                      b.shelf = shelf;
+                    }
+                  })
+                }));
+              }}/>
             ))}
           </ol>
         </div>
