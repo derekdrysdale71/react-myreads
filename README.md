@@ -12,11 +12,11 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Using the App
 * Books are sorted into three categories: Currently Reading, Want to Read, and Read
-* To change a book's category or remove a book from the list, click on the green button on  the book cover
-* To add new books, click on the green + button at the bottom of the page.
+* To change a book's category or remove a book from the list, click on the down arrow on the book cover
+* To add new books, click on the '+' button at the bottom of the page.
 Enter an author's name or subject. Up to 20 items will be returned.
 
-*Note: The backend API is limited to a fixed set of [search terms](#search-terms)  -- see below for valid search options*
+*Note: The backend API is limited to a fixed set of [search terms](#search-terms)
 
 ## License
 
